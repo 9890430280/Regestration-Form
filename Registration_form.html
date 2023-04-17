@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Form</title>
+    <style>
+      /* Style for the form container */
+      .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #f2f2f2;
+      }
+
+      /* Style for form fields */
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 20px 0;
+        border: none;
+        background-color: #fff;
+        border-radius: 3px;
+      }
+
+      /* Style for submit button */
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      /* Style for form label */
+      label {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form id="registration-form">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Register">
+      </form>
+
+      <div id="registration-info"></div>
+    </div>
+
+    <script>
+      // Get form and registration info elements
+      const form = document.getElementById("registration-form");
+      const registrationInfo = document.getElementById("registration-info");
+
+      // Listen for form submission
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent form from submitting
+
+        // Get form field values
+        const fullname = form.elements["fullname"].value;
+        const email = form.elements["email"].value;
+        const password = form.elements["password"].value;
+
+        // Create registration info HTML
+        const registrationHTML = `
+          <h2>Registration Information</h2>
+          <p><strong>Full Name:</strong> ${fullname}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Password:</strong> ${password}</p>
+        `;
+
+        // Update registration info element
+        registrationInfo.innerHTML = registrationHTML;
+
+        // Reset form
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
